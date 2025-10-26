@@ -1,15 +1,21 @@
 import React from "react";
 import { Navbar } from "./component/Navbar";
-import { Route, Routes } from "react-router-dom";
-import Home from "../src/pages/Home"
+import { Route, Routes, useLocation } from "react-router-dom";
+import Home from "./pages/Home";
 import MovieDetails from "./pages/MovieDetails";
 import SeatLayout from "./pages/SeatLayout";
 import MyBookings from "./pages/MyBookings";
 import Favorite from "./pages/Favorite";
+import Movie from "./pages/Movie";
+import { Toaster } from "react-hot-toast";
+import Footer from "./component/Footer";
+
 export const App = () => {
+  const isAdminRoute = useLocation().pathname.startsWith("/admin");
   return (
     <>
-      <Navbar />
+      <Toaster />
+      {!isAdminRoute && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie" element={<Movie />} />
@@ -18,6 +24,7 @@ export const App = () => {
         <Route path="/my-bookings" element={<MyBookings />} />
         <Route path="/favorite" element={<Favorite />} />
       </Routes>
+      {!isAdminRoute && <Footer />}
     </>
   );
 };
