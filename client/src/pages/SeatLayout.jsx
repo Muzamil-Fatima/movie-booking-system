@@ -5,3 +5,4 @@ export const SeatLayout = () => {
     <div>SeatLayout</div>
   )
 }
+export default SeatLayout;

@@ -5,3 +5,4 @@ export const MovieDetails = () => {
     <div>MovieDetails</div>
   )
 }
+export default MovieDetails;
